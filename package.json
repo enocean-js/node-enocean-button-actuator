@@ -1,0 +1,29 @@
+{
+  "name": "node-enocean-button-aktor",
+  "version": "1.0.0",
+  "description": "an aktor to reakt to enocean rockswitch signals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holger-Will/node-enocean-button-aktor.git"
+  },
+  "keywords": [
+    "enocean",
+    "node-enocean",
+    "home",
+    "automation",
+    "iot"
+  ],
+  "author": "Holger Will",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Holger-Will/node-enocean-button-aktor/issues"
+  },
+  "homepage": "https://github.com/Holger-Will/node-enocean-button-aktor#readme",
+  "devDependencies": {
+    "node-enocean": "^1.7.0"
+  }
+}
