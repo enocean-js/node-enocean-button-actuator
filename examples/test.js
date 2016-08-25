@@ -1,29 +1,32 @@
-var ButtonAktor= require("../")
+var ButtonActuator= require("../")
 var enocean = require("node-enocean")();
 
-const exec = require('child_process').exec;
-var proc
-var button = new ButtonAktor(enocean)
-button.id="002a1d4d"
+var button = new ButtonActuator(enocean)
 
-button.addEventListener("down",function(data){
-  proc = exec("gnome-calculator",function(err,stdin,stdout){console.log(err,stdin,stdout)})
-  //proc.on("error",function(err){console.log(err)})
-  proc.on("exit",function(ret){console.log(ret)})
-})
-button.addEventListener("up",function(data){
-  proc.kill()
-})
-button.addEventListener("click",function(data){
-  console.log("fun stuff")
+var timer
+
+button.down = (data) => timer=new Date()
+button.up = (data) => {if(data.button!="unknown"){timer=(new Date())-timer;console.log(`the ${data.button}-button was hold down for ${timer/1000} s`)}}
+
+
+
+//  the rest of the code is for learning in the first receive rocker switch
+enocean.on("learned",function(sensor){
+  console.log("")
+  console.log("Great! press it again!")
+  button.id=sensor.id
 })
 
+enocean.on("ready",function(){
+  enocean.startLearning()
+  console.log("press a button")
+})
+
+// and to forget the sensor uppun closing
+process.on("SIGINT",function(){
+  enocean.forget(button.id)
+  enocean.on("forgotten",function(){
+    process.exit();
+  })
+})
 enocean.listen("/dev/ttyUSB0");
-// enocean.on("ready",function(){
-//   enocean.learn({
-//           id:"002a1d4d",
-//           eep: "f6-02-03",
-//           desc:"Switch",
-//           manufacturer:"Enocean GmbH"
-//       })
-// })
