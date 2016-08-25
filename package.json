@@ -1,6 +1,6 @@
 {
   "name": "node-enocean-button-actuator",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "an actuator to reakt to enocean rocker switch signals",
   "main": "index.js",
   "scripts": {
