@@ -1,14 +1,14 @@
 {
-  "name": "node-enocean-button-aktor",
+  "name": "node-enocean-button-actuator",
   "version": "1.0.0",
-  "description": "an aktor to reakt to enocean rockswitch signals",
+  "description": "an actuator to reakt to enocean rocker switch signals",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Holger-Will/node-enocean-button-aktor.git"
+    "url": "git+https://github.com/Holger-Will/node-enocean-button-actuator.git"
   },
   "keywords": [
     "enocean",
@@ -20,10 +20,12 @@
   "author": "Holger Will",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Holger-Will/node-enocean-button-aktor/issues"
+    "url": "https://github.com/Holger-Will/node-enocean-button-actuator/issues"
   },
-  "homepage": "https://github.com/Holger-Will/node-enocean-button-aktor#readme",
+  "homepage": "https://github.com/Holger-Will/node-enocean-button-actuator#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
     "node-enocean": "^1.7.0"
   }
 }
