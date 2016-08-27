@@ -1,10 +1,14 @@
 function ButtonActuator (app){
+  this.app=app
   this.active="unknown"
   this.id=""
   this.down = function(){}
   this.up = function(){}
   this.click = function(){}
-  app.on("known-data",function(data){
+  this.removeListener=function(){
+    this.app.removeListener("known-data",this.action)
+  }.bind(this)
+  this.action = function(data){
     if(data.senderId==this.id){
       var val = data.values[0].value
       var ba = val.split(" ")
@@ -17,6 +21,7 @@ function ButtonActuator (app){
       this.active = ba[0]
       this.down({button:this.active,event:"up"})
     }
-  }.bind(this))
+  }.bind(this)
+  app.on("known-data",this.action)
 }
 module.exports=ButtonActuator
