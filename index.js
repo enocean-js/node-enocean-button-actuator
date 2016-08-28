@@ -13,13 +13,13 @@ function ButtonActuator (app){
       var val = data.values[0].value
       var ba = val.split(" ")
       if(ba[0]=="released")  {
-        this.up({button:this.active,event:"down"})
+        this.up({button:this.active,event:"up"})
         if(this.active!="unknown") this.click({button:this.active,event:"click"})
         this.active="unknown"
-        return
+      }else{
+        this.active = ba[0]
+        this.down({button:this.active,event:"down"})
       }
-      this.active = ba[0]
-      this.down({button:this.active,event:"up"})
     }
   }.bind(this)
   app.on("known-data",this.action)
