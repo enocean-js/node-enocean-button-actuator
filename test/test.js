@@ -69,10 +69,12 @@ describe('node-enocean-button-actuator', function() {
       var down = Buffer.from("55000707017af670002a1d4d3001ffffffff370090","hex")
       var up = Buffer.from("55000707017af600002a1d4d2001ffffffff3a0034","hex")
       var order=""
-      var f0=function(data){order+="down"}
-      var f1=function(data){order+="up"}
+      var f0=function(data){order+="down";assert.equal(data.event,"down")}
+      var f1=function(data){order+="up";assert.equal(data.event,"up")}
       var f2=function(data){
         order+="click"
+				console.log()
+				assert.equal(data.event,"click")
         assert.equal(order,"downupclick")
         done()
       }
